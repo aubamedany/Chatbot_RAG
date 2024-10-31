@@ -43,7 +43,7 @@ def get_vectorstore(text_chunks):
 
 
 def get_conversation_chain(vectorstore):
-    llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature = 0.1 )
+    llm = ChatGoogleGenerativeAI(model="gemini-1.0-pro", temperature = 0.1 )
     # llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512})
 
     memory = ConversationBufferMemory(
