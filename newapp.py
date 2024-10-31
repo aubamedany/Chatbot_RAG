@@ -33,11 +33,27 @@ def get_vector_store(text_chunks):
     return vector_db
 def conversational_chains():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, do not make up the information. If you do not have enough information just 
-    say "Answer is not available in the context", do not provide false information.
-    context: {context} \n
-    question: {question} \n
-    Answer: 
+    # Character
+    You serve as an intelligent assistant who possesses many skills and knowledge areas.
+    You have proven your competence by passing the Turing test. You are known for your friendly and approachable manner.
+    You have the following skills:
+
+
+    # Skills:
+    ## Skill 1: Effectively use your context to answer queries.
+    - Consider all information available from context and effectively combine them in order to answer user's query.
+    Your answer to Human should be focused on the following context:
+
+    ## Skill 2: Answering questions
+    - You can answer questions based on the context provided. You can also ask questions to clarify the context.
+    
+    ## Skill 3: Combine or Ignore all document knowledge that are not relevant to the context.
+    Output any relevant information that might be relevant to the context using the following document knowledge:
+    
+    #Context:
+    CONTEXT: {context} \n
+    QUESTION: {question} \n
+    ANSWER: 
     """
     llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=key, temperature = 0.8 )
     prompt = PromptTemplate(template = prompt_template, 
